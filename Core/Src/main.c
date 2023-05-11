@@ -99,6 +99,8 @@ int main(void)
   MX_I2C3_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  len = snprintf((char *)msg, 100, "Start...%s", "\n\r");
+  HAL_UART_Transmit(&huart1, msg, len, 100);
   while (sensor_state == 0) {
       status = VL53L1X_BootState(VL53L1X_ADDR, &sensor_state);
   }
